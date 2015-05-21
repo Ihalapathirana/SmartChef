@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gdg.studyjam.smartchef" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CoverActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.SearchActivity"
+            android:label="@string/title_activity_search" >
+            <intent-filter>
+                <action android:name="com.example.anu.SEARCH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.SearchListItem"
+            android:label="@string/title_activity_search_list_item" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.RecipesList"
+            android:label="@string/title_activity_recipes_list" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.RecipyListItem"
+            android:label="@string/title_activity_recipy_list_item" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.RecipyDescription"
+            android:label="@string/title_activity_recipy_description" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.WebSite"
+            android:label="@string/title_activity_web_site" >
+        </activity>
+        <activity
+            android:name=".SecondPage"
+            android:label="@string/title_activity_second_page" >
+            <intent-filter>
+                <action android:name="com.example.anu.SECONDPAGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CoursesSearchActivity"
+            android:label="@string/title_activity_courses_search" >
+        </activity>
+        <activity
+            android:name=".CourseSearchItem"
+            android:label="@string/title_activity_course_search_item" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CourseSpecificRecipes"
+            android:label="@string/title_activity_course_specific_recipes" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CourseRecipeDirections"
+            android:label="@string/title_activity_course_recipe_directions" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CuisinesSearchActivity"
+            android:label="@string/title_activity_cuisines_search" >
+        </activity>
+        <activity
+            android:name="com.gdg.studyjam.smartchef.CuisinesSpecificRecipes"
+            android:label="@string/title_activity_cuisines_specific_recipes" >
+        </activity>
+        <activity
+            android:name=".ItemInListView"
+            android:label="@string/title_activity_item_in_list_view" >
+        </activity>
+        <activity
+            android:name=".TabletSearchActivity"
+            android:label="@string/title_activity_tablet_search" >
+        </activity>
+    </application>
+
+</manifest>
