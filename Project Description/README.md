@@ -8,13 +8,3 @@ in SMARTCHEF we can find recipes by using three categories. Courses, Cuisines an
 APIs used -  Pearson kitchen Manager API http://developer.pearson.com/apis/pearson-kitchen-manager/
 
 
-Screenshots
-
-
-![Alt text](https://github.com/AndroidJamSriLanka/SMARTCHEF/blob/master/UI%20Screen%20Shots/direction.png "Directions for recipe")
-
-
-![Alt text](https://github.com/AndroidJamSriLanka/SMARTCHEF/blob/master/UI%20Screen%20Shots/recipy%20list.png "Recipe list in Recipe section")
-
-![Alt text](https://github.com/AndroidJamSriLanka/SMARTCHEF/blob/master/UI%20Screen%20Shots/search.png "Search recipe according to added Ingredients")
-
