@@ -1,6 +1,11 @@
 package com.gdg.studyjam.smartchef;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceActivity;
+import android.provider.SyncStateContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,12 +15,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.Parse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+
 
 
 public class RecipesList extends ActionBarActivity implements AsyncResponse{
@@ -62,6 +72,11 @@ public class RecipesList extends ActionBarActivity implements AsyncResponse{
         isRandomRecipy= (Boolean) my_bundle_received.get("item2");
         Log.d("Value","--"+my_bundle_received.get("item1").toString());
 
+    //    Parse.enableLocalDatastore(this);
+
+     //   Parse.initialize(this, "pUmiEuyvhENbtiT1CZq1SvxGdaUjVLGUj9nFZOho", "XBbeGCQncATbn9CxGl5tlQoL3uybz3KKpy6yZ5Fe");
+
+
         if(isRandomRecipy==true){
                webAddress="http://api.pearson.com/kitchen-manager/v1/recipes?&limit=500";
         }
@@ -102,7 +117,43 @@ public class RecipesList extends ActionBarActivity implements AsyncResponse{
                 cookMeth=joRecipy.getString("cooking_method");
                 arrayList.add(new Course(title,"cooking_method : "+cookMeth,img));
 
+
+
+
+
+                String recipeName;
+                recipeName = title.toString();
+                RecipeDB helper=new RecipeDB(getApplicationContext());
+                SQLiteDatabase writeDatabase=helper.getWritableDatabase();
+                ContentValues values=new ContentValues();
+
+                values.put(RecipeDB.TABLE_RECIPE_NAME, recipeName);
+                writeDatabase.insert(RecipeDB.TABLE_RECIPE, null, values);
+                writeDatabase.close();
+
+           //     writeDatabase.insert("recipes",null,values);
+           //     writeDatabase.close();
+                Toast.makeText(getApplication(), "Name saved succesfuly", Toast.LENGTH_LONG).show();
+
+
+//read database
+                SQLiteDatabase db =helper.getReadableDatabase();
+                ArrayList<String> friends = new ArrayList<String>();
+                Cursor cursor = db.query(RecipeDB.TABLE_RECIPE, new String[]
+                        {RecipeDB.TABLE_RECIPE_NAME},null,null,null, null, null);
+                while (cursor.moveToNext()){
+                    friends.add(cursor.getString(0));
+                }
+                Log.d("RECIPE NAMES ANUSHA IHALAPATHIRANA - ",cursor.getString(0));
+                cursor.close();
+                db.close();
+
+
+
             }
+
+
+
 
 
             if (arrayList.size() == 0) {
@@ -115,6 +166,8 @@ public class RecipesList extends ActionBarActivity implements AsyncResponse{
             myAdapter=new MyAdapter(this,arrayList);
             listView= (ListView) findViewById(R.id.listViewRecipes);
             listView.setAdapter(myAdapter);
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();

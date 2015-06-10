@@ -91,4 +91,11 @@
         </activity>
     </application>
 
+
+    <provider android:name=".RecipeHelper"
+        android:authorities="com.gdg.studyjam.smartchef.RecipeHelper"
+        android:exported="true">
+    </provider>
+
+
 </manifest>
